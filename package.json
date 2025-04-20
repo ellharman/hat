@@ -1,0 +1,29 @@
+{
+  "name": "next-js-ulimtate-tutorial",
+  "version": "1.0.0",
+  "description": "Next.js Storyblok Ultimate Tutorial",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "tsc --project tsconfig.json && next build",
+    "start": "next start",
+    "type-check": "tsc",
+    "pull-types": "storyblok pull-components --space 333125 && storyblok generate-typescript-typedefs --sourceFilePaths ./components.333125.json --destinationFilePath ./component-types-sb.d.ts"
+  },
+  "dependencies": {
+    "@fontsource/cinzel-decorative": "^5.2.5",
+    "@storyblok/react": "^2.4.7",
+    "next": "^15.3.1",
+    "react": "18",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@types/react": "^19.1.2",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.2.1",
+    "typescript": "^5.8.3"
+  }
+}
