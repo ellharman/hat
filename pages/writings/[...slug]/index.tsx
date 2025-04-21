@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import Layout from "../../../components/Layout";
-import fetchSB, { StoryVersion } from "../storyblok-fetch";
+import fetchSB, { StoryVersion } from "../api/storyblok-fetch";
 import BlogPost from "../../../components/BlogPost";
 
 const WritingSlugPage: React.FC = () => {
