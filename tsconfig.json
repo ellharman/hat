@@ -15,6 +15,11 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "tailwind.config.js"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "tailwind.config.js",
+    "component-types-sb.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

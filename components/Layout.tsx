@@ -22,8 +22,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </a>
           </li>
           <li>
-            <a href="/about" className="hover:underline">
-              About
+            <a href="/writings" className="hover:underline">
+              Writings
             </a>
           </li>
         </ul>
