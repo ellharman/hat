@@ -1,3 +1,5 @@
+export const runtime = "experimental-edge";
+
 import React from "react";
 import fetchSB, { StoryVersion } from "../../api/storyblok-fetch";
 import BlogPost from "../../../components/BlogPost";
