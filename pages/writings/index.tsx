@@ -45,19 +45,23 @@ export default function Writings() {
       </Head>
       <Layout>
         <main className="flex-1 px-6 py-8">
-          {slugList && slugList.length > 0 ? (
-            slugList.map((story) => (
-              <Link
-                key={story.id}
-                href={`/writings/${story.slug}`}
-                className="block bg-secondary h-fit-content bg-opacity-90 p-4 rounded-lg font-semibold my-2"
-              >
-                <h2>{story.name}</h2>
-                <p>{story.content.intro}</p>
-              </Link>
-            ))
+          {slugList ? (
+            slugList.length > 0 ? (
+              slugList.map((story) => (
+                <Link
+                  key={story.id}
+                  href={`/writings/${story.slug}`}
+                  className="block bg-secondary text-contrast h-fit-content bg-opacity-90 p-4 rounded-lg font-semibold my-2"
+                >
+                  <h2>{story.name}</h2>
+                  <p>{story.content.intro}</p>
+                </Link>
+              ))
+            ) : null
           ) : (
-            <p>No stories available.</p>
+            <div className="flex justify-center items-center h-full">
+              <p className="text-2xl">Loading...</p>
+            </div>
           )}
         </main>
       </Layout>

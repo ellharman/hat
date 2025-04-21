@@ -1,7 +1,8 @@
 import React from "react";
+import { BlogPostStoryblok } from "../component-types-sb";
 import { render } from "storyblok-rich-text-react-renderer";
 
-const BlogPost = ({ story }) => {
+const BlogPost = ({ story }: { story: BlogPostStoryblok }) => {
   console.log("Rendering blog post with story:", story);
 
   const content = story.content;
