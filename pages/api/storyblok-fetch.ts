@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 export enum StoryVersion {
   DRAFT = "draft",
   PUBLISHED = "published",
