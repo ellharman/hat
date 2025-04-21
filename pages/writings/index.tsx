@@ -7,7 +7,7 @@ import {
 } from "@storyblok/react";
 import Layout from "../../components/Layout";
 import { useEffect, useState } from "react";
-import fetchSB, { StoryVersion } from "./api/storyblok-fetch";
+import fetchSB, { StoryVersion } from "../api/storyblok-fetch";
 import Link from "next/link";
 
 type Story = {
