@@ -1,39 +1,32 @@
-export const runtime = 'experimental-edge';
-
-import { useRouter } from "next/router";
-import React, { useEffect } from "react";
-import Layout from "../../../components/Layout";
+import React from "react";
 import fetchSB, { StoryVersion } from "../../api/storyblok-fetch";
 import BlogPost from "../../../components/BlogPost";
+import { GetStaticPaths, GetStaticProps } from "next";
 
-const WritingSlugPage: React.FC = () => {
-  const router = useRouter();
-  const { slug } = router.query;
-  const [story, setStory] = React.useState<any>(null);
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { slug } = context.params || {};
+  const res = await fetchSB("/stories", StoryVersion.DRAFT, `writings/${slug}`);
+  const { stories = [] } = await res.json();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (!slug) return;
-      try {
-        const res = await fetchSB(
-          `/stories/writings/${slug}`,
-          StoryVersion.DRAFT
-        );
-        const data = await res.json();
-        console.log("Fetched data:", data);
-        setStory(data.story); // Store the complete story object
-      } catch (err) {
-        console.error("Error fetching Storyblok content:", err);
-      }
-    };
-    fetchData();
-  }, [slug]);
-
-  return (
-    <Layout>
-      {story ? <BlogPost story={story} /> : <div>Loading...</div>}
-    </Layout>
-  );
+  return {
+    props: {
+      story: stories[0] || null,
+    },
+    revalidate: 30, // Revalidate every minute
+  };
 };
+export const getStaticPaths = (async () => {
+  return {
+    paths: [],
+    fallback: true, // false or "blocking"
+  };
+}) satisfies GetStaticPaths;
 
-export default WritingSlugPage;
+interface WritingPageProps {
+  story: any;
+}
+
+const Writing: React.FC<WritingPageProps> = ({ story }) => {
+  return <>{story ? <BlogPost story={story} /> : <div>Loading...</div>}</>;
+};
+export default Writing;

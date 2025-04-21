@@ -1,14 +1,7 @@
-import Head from "next/head";
-
-import {
-  useStoryblokState,
-  getStoryblokApi,
-  StoryblokComponent,
-} from "@storyblok/react";
-import Layout from "../../components/Layout";
-import { useEffect, useState } from "react";
 import fetchSB, { StoryVersion } from "../api/storyblok-fetch";
 import Link from "next/link";
+import { GetStaticProps } from "next";
+import React from "react";
 
 type Story = {
   id: number;
@@ -20,51 +13,44 @@ type Story = {
   [key: string]: any;
 };
 
-export default function Writings() {
-  const [slugList, setSlugList] = useState<Story[]>([]);
+type WritingsProps = {
+  stories: Story[];
+};
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetchSB("/stories", StoryVersion.DRAFT, "writings/");
-        const data = await res.json();
-        console.log("Fetched Storyblok content:", data);
-        setSlugList(data.stories);
-      } catch (err) {
-        console.error("Error fetching Storyblok content:", err);
-      }
-    };
-    fetchData();
-  }, []);
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetchSB("/stories", StoryVersion.DRAFT, "writings/", "created_at:desc");
+  const { stories = [] } = await res.json();
 
+  return {
+    props: {
+      stories,
+    },
+    revalidate: 30, // Revalidate every minute
+  };
+};
+
+export default function Writings({ stories }: WritingsProps) {
+  stories.sort()
   return (
     <div>
-      <Head>
-        <title>Home</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Layout>
-        <main className="flex-1 px-6 py-8">
-          {slugList ? (
-            slugList.length > 0 ? (
-              slugList.map((story) => (
-                <Link
-                  key={story.id}
-                  href={`/writings/${story.slug}`}
-                  className="block bg-secondary text-contrast h-fit-content bg-opacity-90 p-4 rounded-lg font-semibold my-2"
-                >
-                  <h2>{story.name}</h2>
-                  <p>{story.content.intro}</p>
-                </Link>
-              ))
-            ) : null
-          ) : (
-            <div className="flex justify-center items-center h-full">
-              <p className="text-2xl">Loading...</p>
-            </div>
-          )}
-        </main>
-      </Layout>
+      <main className="flex-1 px-6 py-8">
+        {stories.length > 0 ? (
+          stories.map((story: Story) => (
+            <Link
+              key={story.id}
+              href={`/writings/${story.slug}`}
+              className="block bg-secondary text-contrast h-fit-content bg-opacity-90 p-4 rounded-lg font-semibold my-2"
+            >
+              <h2>{story.name}</h2>
+              <p>{story.content.intro}</p>
+            </Link>
+          ))
+        ) : (
+          <div className="flex justify-center items-center h-full">
+            <p className="text-2xl">Loading...</p>
+          </div>
+        )}
+      </main>
     </div>
   );
 }
