@@ -116,7 +116,9 @@ const Nav: React.FC = () => {
       suppressHydrationWarning
       className="bg-secondary text-contrast px-6 py-4 flex items-center justify-between sticky top-0 z-50"
     >
-      <div className="font-bold text-lg">Datura Astrobotanics</div>
+      <a href="/" className="font-bold text-lg">
+        Datura Astrobotanics
+      </a>
       <ul className="flex space-x-6">
         <li>
           <a href="/" className="hover:underline">

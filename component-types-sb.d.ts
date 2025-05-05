@@ -47,14 +47,8 @@ export interface GridStoryblok {
 }
 
 export interface PageStoryblok {
-  body?: (
-    | BlogPostStoryblok
-    | BlogPostListStoryblok
-    | FeatureStoryblok
-    | GridStoryblok
-    | PageStoryblok
-    | TeaserStoryblok
-  )[];
+  title?: string;
+  content?: RichtextStoryblok;
   component: "page";
   _uid: string;
   [k: string]: any;

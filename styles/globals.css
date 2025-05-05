@@ -6,15 +6,33 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Cinzel Decorative", system-ui, -apple-system, BlinkMacSystemFont,
-    Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif;
-  background-color: #A69581;
+  font-family: "Lora", serif;
+  font-family: "Cinzel Decorative", serif-header;
+  background-color: #a69581;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Cinzel Decorative", serif;
+}
+
+p {
+  font-family: "Lora", serif;
+  font-size: 1.125rem;
+  line-height: 1.5;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+p:not(:last-child) {
+  margin-bottom: 1rem;
 }
 
 * {

@@ -14,6 +14,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource-variable/lora@npm:^5.2.5":
+  version: 5.2.5
+  resolution: "@fontsource-variable/lora@npm:5.2.5"
+  checksum: 10c0/146ab21bc98eb532e0faf579950cdfd2b122582a8988778f9b75c7541d354b1f4ce5c013ee6e3b7a13d94e6a6dd1793b10c05c47b55b65d804a05ac82912fff0
+  languageName: node
+  linkType: hard
+
 "@fontsource/cinzel-decorative@npm:^5.2.5":
   version: 5.2.5
   resolution: "@fontsource/cinzel-decorative@npm:5.2.5"
@@ -363,6 +370,13 @@ __metadata:
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
   checksum: 10c0/757f785f96b01318315a8c467e36ee2f25696f75942ac04e0108301d2254ab9f19cc13a805cbfe86ebbba2f6cc08198906de73f8a8afaf828b96cc33cd1db87d
+  languageName: node
+  linkType: hard
+
+"@storyblok/richtext@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "@storyblok/richtext@npm:3.2.0"
+  checksum: 10c0/03cb184fdbce04e9f6c612e73cca9110ba34bf41183ecd845a109d06c49e62defac2bf2d2f218c0cdc4dedaaf1960355e99bf1f16e8d6f14c209fc7400bff078
   languageName: node
   linkType: hard
 
@@ -1299,8 +1313,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "next-js-ulimtate-tutorial@workspace:."
   dependencies:
+    "@fontsource-variable/lora": "npm:^5.2.5"
     "@fontsource/cinzel-decorative": "npm:^5.2.5"
     "@storyblok/react": "npm:^2.4.7"
+    "@storyblok/richtext": "npm:^3.2.0"
     "@types/node": "npm:^22.14.1"
     "@types/react": "npm:^19.1.2"
     autoprefixer: "npm:^10.4.13"
