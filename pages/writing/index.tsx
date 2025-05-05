@@ -38,7 +38,7 @@ export default function Writings({ stories }: WritingsProps) {
           stories.map((story: Story) => (
             <Link
               key={story.id}
-              href={`/writings/${story.slug}`}
+              href={`/writing/${story.slug}`}
               className="block bg-secondary text-contrast h-fit-content bg-opacity-90 p-4 rounded-lg font-semibold my-2"
             >
               <h2>{story.name}</h2>

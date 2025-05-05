@@ -1,5 +1,7 @@
 import React, { ReactNode, useEffect, useState } from "react";
 
+import Nav from "./Nav";
+
 interface LayoutProps {
   children: ReactNode;
 }
@@ -13,21 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className="h-screen bg-neutral flex flex-col">
-      <nav className="bg-secondary text-contrast px-6 py-4 flex items-center justify-between sticky top-0 z-50">
-        <div className="font-bold text-lg">Datura Astrobotanics</div>
-        <ul className="flex space-x-6">
-          <li>
-            <a href="/" className="hover:underline">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="/writings" className="hover:underline">
-              Writings
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <Nav />
       <main
         className="flex-1 px-6 py-8"
         style={{
