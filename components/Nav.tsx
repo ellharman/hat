@@ -28,7 +28,7 @@ const Nav: React.FC = () => {
       {menuOpen && (
         <>
           <div
-            className="absolute top-16 right-6 bg-secondary text-contrast rounded-lg shadow-lg z-50"
+            className="absolute top-14 right-0 bg-secondary text-contrast rounded-lg shadow-lg z-50"
             onClick={(e) => e.stopPropagation()}
           >
             <ul className="flex flex-col space-y-2">
@@ -44,7 +44,14 @@ const Nav: React.FC = () => {
                 >
                   Offerings
                 </button>
-                <ul className="absolute mt-2 right-10 bg-secondary text-contrast rounded-lg shadow-lg hidden group-hover:block group-focus-within:block">
+                <ul
+                  className="absolute right-full top-0 bg-secondary text-contrast 
+                  rounded-l-lg shadow-lg shadow-left hidden group-hover:block 
+                  group-focus-within:block before:content-[''] before:absolute 
+                  before:top-1/2 before:right-0 before:transform before:-translate-y-1/2 
+                  before:w-2 before:h-2 before:bg-secondary before:rotate-45 
+                  before:translate-x-1"
+                >
                   <li>
                     <a
                       href="/offerings/introduction"
