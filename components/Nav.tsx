@@ -62,6 +62,14 @@ const Nav: React.FC = () => {
                   </li>
                   <li>
                     <a
+                      href="/offerings/astroherbalism"
+                      className="block px-4 py-2 hover:bg-secondary/80"
+                    >
+                      Astroherbalism & Medical Astrology
+                    </a>
+                  </li>
+                  <li>
+                    <a
                       href="/offerings/readings"
                       className="block px-4 py-2 hover:bg-secondary/80"
                     >

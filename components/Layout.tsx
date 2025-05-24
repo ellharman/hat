@@ -4,9 +4,10 @@ import Nav from "./Nav";
 
 interface LayoutProps {
   children: ReactNode;
+  alignCenter?: boolean;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, alignCenter }) => {
   const [backgroundImageSrc, setBackgroundImageSrc] = useState<string>("");
 
   useEffect(() => {
@@ -17,7 +18,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="h-screen bg-neutral flex flex-col">
       <Nav />
       <main
-        className="flex-1 px-6 py-8"
+        className={`flex-1 ${alignCenter ? "content-center" : ""} px-6 py-8`}
         style={{
           backgroundImage: `url(${backgroundImageSrc})`,
           backgroundSize: "cover",
