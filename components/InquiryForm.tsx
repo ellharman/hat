@@ -2,8 +2,6 @@ const InquiryForm: React.FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    console.log("I should be public")
-
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData.entries());
 
