@@ -1,15 +1,20 @@
-"use client";
-
-import { sendBookingInquiryEmail } from "../actions/sendInquiry";
-
 const InquiryForm: React.FC = () => {
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = event.currentTarget;
-    if (!form) return;
-    const formData = new FormData(form);
-    sendBookingInquiryEmail(formData);
-  }
+
+    console.log("I should be public")
+
+    const formData = new FormData(event.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    fetch("/api/post-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit} className="p-4 mx-auto max-w-xl bg-secondary">
