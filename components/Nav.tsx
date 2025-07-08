@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-
-// get the screen width
+import { usePathname } from "next/navigation";
 
 const Nav: React.FC = () => {
   const [isMobile, setIsMobile] = React.useState(false);
@@ -9,6 +8,12 @@ const Nav: React.FC = () => {
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
   }, []);
+
+  const pathname = usePathname();
+
+  if (pathname === "/") {
+    return null;
+  }
 
   return isMobile ? (
     <nav
@@ -45,7 +50,7 @@ const Nav: React.FC = () => {
                   Offerings
                 </button>
                 <ul
-                  className="absolute right-full top-0 bg-secondary text-contrast 
+                  className="absolute right-full top-0 bg-secondary-700  text-contrast 
                   rounded-l-lg shadow-lg shadow-left hidden group-hover:block 
                   group-focus-within:block before:content-[''] before:absolute 
                   before:top-1/2 before:right-0 before:transform before:-translate-y-1/2 
