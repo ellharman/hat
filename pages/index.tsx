@@ -6,7 +6,7 @@ const Home: React.FC = () => {
     e.preventDefault();
     setDrift(true);
     setTimeout(() => {
-      window.location.href = "/writing";
+      window.location.href = "/about";
     }, 300);
   };
   return (
@@ -28,7 +28,7 @@ const Home: React.FC = () => {
           className="hidden md:block mx-auto rounded-xl object-contain h-[66vh]"
         />
         <a
-          href="/writing"
+          href="/about"
           onClick={handleClick}
           className={`absolute left-1/2 top-1/2 z-20 px-16 py-8 bg-primary text-contrast text-2xl font-bold rounded-3xl shadow-lg transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary-300 ${drift ? "translate-y-[-200%] opacity-0 pointer-events-none" : ""} -translate-x-1/2 -translate-y-1/2`}
           style={{
