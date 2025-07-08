@@ -1,3 +1,4 @@
+export const runtime = "edge";
 import * as cheerio from 'cheerio';
 import { NextApiRequest, NextApiResponse } from 'next';
 
