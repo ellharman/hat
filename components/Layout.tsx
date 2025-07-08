@@ -19,9 +19,11 @@ const Layout: React.FC<LayoutProps> = ({ children, alignCenter }) => {
 
   return (
     <div className="h-screen bg-neutral flex flex-col">
-      <Nav />
+      <div className="sticky top-0 z-50">
+        <Nav />
+      </div>
       <main
-        className={`flex-1 ${alignCenter ? "content-center" : ""} ${
+        className={`flex-1 relative ${alignCenter ? "content-center" : ""} ${
           pathname === "/" ? "px-0" : "px-6 py-8"
         }`}
         style={{
@@ -30,11 +32,13 @@ const Layout: React.FC<LayoutProps> = ({ children, alignCenter }) => {
           backgroundPosition: "center",
         }}
       >
-        {children}
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-[0.5px]"></div>
+
+        <div className="relative z-10">{children}</div>
       </main>
       {pathname !== "/" && (
         <footer>
-          <div className="bg-secondary text-contrast px-6 py-4 flex items-center justify-between">
+          <div className="bg-secondary-700 text-contrast px-6 py-4 flex items-center justify-between">
             <ul className="flex space-x-6 mx-auto">
               <li className="text-sm text-contrast/70">
                 &copy; {new Date().getFullYear()} Datura Astrobotanics
@@ -46,5 +50,4 @@ const Layout: React.FC<LayoutProps> = ({ children, alignCenter }) => {
     </div>
   );
 };
-
 export default Layout;

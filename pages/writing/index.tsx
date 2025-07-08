@@ -2,6 +2,7 @@ import fetchSB, { StoryVersion } from "../api/storyblok-fetch";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import React from "react";
+import SubstackEmbed from "../../components/SubstackEmbed";
 
 type Story = {
   id: number;
@@ -18,7 +19,12 @@ type WritingsProps = {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetchSB("/stories", StoryVersion.DRAFT, "writings/", "created_at:desc");
+  const res = await fetchSB(
+    "/stories",
+    StoryVersion.DRAFT,
+    "writings/",
+    "created_at:desc"
+  );
   const { stories = [] } = await res.json();
 
   return {
@@ -30,20 +36,17 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default function Writings({ stories }: WritingsProps) {
-  stories.sort()
+  stories.sort();
   return (
     <div>
       <main className="flex-1 px-6 py-8">
         {stories.length > 0 ? (
           stories.map((story: Story) => (
-            <Link
+            <SubstackEmbed
               key={story.id}
-              href={`/writing/${story.slug}`}
-              className="block bg-secondary text-contrast h-fit-content bg-opacity-90 p-4 rounded-lg font-semibold my-2"
-            >
-              <h2>{story.name}</h2>
-              <p>{story.content.intro}</p>
-            </Link>
+              url={story.content.substack_url}
+              className="mb-12"
+            />
           ))
         ) : (
           <div className="flex justify-center items-center h-full">

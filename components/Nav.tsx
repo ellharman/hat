@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-const Nav: React.FC = () => {
+const Nav: React.FC<{ className?: string }> = ({ className }) => {
   const [isMobile, setIsMobile] = React.useState(false);
   const [menuOpen, setMenuOpen] = React.useState(false);
 
@@ -18,7 +18,10 @@ const Nav: React.FC = () => {
   return isMobile ? (
     <nav
       suppressHydrationWarning
-      className="bg-secondary text-contrast px-6 py-4 flex items-center justify-between sticky top-0 z-50"
+      className={`sticky bg-secondary-700 text-contrast px-6 py-4 flex items-center justify-between top-0 ${className}`}
+      style={{
+        zIndex: 100000,
+      }}
     >
       <a href="/" className="font-bold text-lg">
         Datura Astrobotanics
@@ -26,6 +29,9 @@ const Nav: React.FC = () => {
       <button
         suppressHydrationWarning
         className="text-contrast hover:underline"
+        style={{
+          paddingRight: "0.7rem",
+        }}
         onClick={() => setMenuOpen((prev) => !prev)}
       >
         Menu
@@ -33,20 +39,17 @@ const Nav: React.FC = () => {
       {menuOpen && (
         <>
           <div
-            className="absolute top-14 right-0 bg-secondary-700 text-contrast rounded-lg shadow-lg z-50"
+            className="absolute text-center top-12 right-0 bg-secondary-700 text-contrast rounded-lg shadow-lg z-50"
             onClick={(e) => e.stopPropagation()}
           >
             <ul className="flex flex-col space-y-2">
               <li>
-                <a href="/" className="block px-4 py-2">
-                  Home
+                <a href="/about" className="block px-4 py-2">
+                  About
                 </a>
               </li>
               <li className="relative group">
-                <button
-                  suppressHydrationWarning
-                  className="block px-4 py-2"
-                >
+                <button suppressHydrationWarning className="block px-4 py-2">
                   Offerings
                 </button>
                 <ul
@@ -84,34 +87,17 @@ const Nav: React.FC = () => {
                 </ul>
               </li>
               <li>
-                <a
-                  href="/about"
-                  className="block px-4 py-2"
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/writing"
-                  className="block px-4 py-2"
-                >
+                <a href="/writing" className="block px-4 py-2">
                   Writing
                 </a>
               </li>
               <li>
-                <a
-                  href="/shop"
-                  className="block px-4 py-2"
-                >
+                <a href="/shop" className="block px-4 py-2">
                   Shop
                 </a>
               </li>
               <li>
-                <a
-                  href="/booking"
-                  className="block px-4 py-2"
-                >
+                <a href="/booking" className="block px-4 py-2">
                   Booking
                 </a>
               </li>

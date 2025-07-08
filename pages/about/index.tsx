@@ -2,7 +2,6 @@ import { GetStaticProps } from "next";
 import fetchSB, { StoryVersion } from "../api/storyblok-fetch";
 import { PageStoryblok } from "../../component-types-sb";
 import Page from "../../components/Page";
-import InquiryForm from "../../components/InquiryForm";
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const res = await fetchSB("/stories", StoryVersion.DRAFT, `about`);
@@ -35,9 +34,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 const About: React.FC<PageStoryblok> = ({ story }) => {
   return (
     <>
-      {" "}
       {story ? <Page story={story} /> : <div>Loading...</div>}
-      <InquiryForm />
     </>
   );
 };
