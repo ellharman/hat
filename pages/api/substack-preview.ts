@@ -1,15 +1,20 @@
-export const runtime = "edge";
 import * as cheerio from 'cheerio';
-import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { url } = req.query;
-  
+export const runtime = "edge";
+
+export default async function handler(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const url = searchParams.get('url');
+
+  if (!url) {
+    return new Response(JSON.stringify({ error: 'Missing url parameter' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+  }
+
   try {
-    const response = await fetch(url as string);
+    const response = await fetch(url);
     const html = await response.text();
     const $ = cheerio.load(html);
-    
+
     const data = {
       title: $('meta[property="og:title"]').attr('content') || $('title').text(),
       description: $('meta[property="og:description"]').attr('content'),
@@ -17,9 +22,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       thumbnail: $('meta[property="og:image"]').attr('content'),
       publicationName: $('meta[property="og:site_name"]').attr('content')
     };
-    
-    res.status(200).json(data);
+
+    return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch data' });
+    return new Response(JSON.stringify({ error: 'Failed to fetch data' }), { status: 500, headers: { 'Content-Type': 'application/json' } });
   }
 }

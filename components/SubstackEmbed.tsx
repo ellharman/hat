@@ -91,7 +91,7 @@ const SubstackCard: React.FC<SubstackCardProps> = ({ url, className = "" }) => {
 
   return (
     <div
-      className={`bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-200 ${className}`}
+      className={`bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-200 ${className} md:max-w-xl mx-auto`}
     >
       {data.thumbnail && (
         <div className="aspect-video bg-gray-100">
