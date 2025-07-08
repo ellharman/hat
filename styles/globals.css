@@ -11,6 +11,10 @@ body {
   background-color: #74799a;
 }
 
+img {
+  border-radius: 10px;
+}
+
 h1,
 h2,
 h3,
@@ -37,4 +41,14 @@ p:not(:last-child) {
 
 * {
   box-sizing: border-box;
+}
+
+/* this should only apply on desktop */
+@media (min-width: 768px) {
+  .sb-image-container {
+    max-width: 30%;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 2rem;
+  }
 }

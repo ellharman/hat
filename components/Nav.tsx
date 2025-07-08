@@ -113,7 +113,10 @@ const Nav: React.FC<{ className?: string }> = ({ className }) => {
   ) : (
     <nav
       suppressHydrationWarning
-      className="bg-secondary text-contrast px-6 py-4 flex items-center justify-between sticky top-0 z-50"
+      className={`bg-secondary-700 text-contrast px-6 py-4 flex items-center justify-between sticky top-0 z-50 ${className} ${isMobile ? "hidden" : ""}`}
+      style={{
+        zIndex: 100000,
+      }}
     >
       <a href="/" className="font-bold text-lg">
         Datura Astrobotanics
