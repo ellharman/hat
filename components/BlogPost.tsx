@@ -9,7 +9,7 @@ const BlogPost = ({ story }: { story: BlogPostStoryblok }) => {
   return (
     <div className="bg-secondary h-fit-content bg-opacity-90 p-4 rounded-lg font-semibold my-2">
       <h1 className="text-2xl font-bold">{content?.title}</h1>
-      <p className="text-sm text-gray-500">{content?.description}</p>
+      <p className="text-sm text-neutral-500">{content?.description}</p>
       {content?.content && (
         <div
           className="mt-4"

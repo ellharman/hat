@@ -28,19 +28,19 @@ const Nav: React.FC = () => {
       {menuOpen && (
         <>
           <div
-            className="absolute top-14 right-0 bg-secondary text-contrast rounded-lg shadow-lg z-50"
+            className="absolute top-14 right-0 bg-secondary-700 text-contrast rounded-lg shadow-lg z-50"
             onClick={(e) => e.stopPropagation()}
           >
             <ul className="flex flex-col space-y-2">
               <li>
-                <a href="/" className="block px-4 py-2 hover:bg-secondary/80">
+                <a href="/" className="block px-4 py-2">
                   Home
                 </a>
               </li>
               <li className="relative group">
                 <button
                   suppressHydrationWarning
-                  className="block px-4 py-2 hover:bg-secondary/80"
+                  className="block px-4 py-2"
                 >
                   Offerings
                 </button>
@@ -55,7 +55,7 @@ const Nav: React.FC = () => {
                   <li>
                     <a
                       href="/offerings/introduction"
-                      className="block px-4 py-2 hover:bg-secondary/80"
+                      className="block px-4 py-2 hover:underline"
                     >
                       Introduction
                     </a>
@@ -63,7 +63,7 @@ const Nav: React.FC = () => {
                   <li>
                     <a
                       href="/offerings/astroherbalism"
-                      className="block px-4 py-2 hover:bg-secondary/80"
+                      className="block px-4 py-2"
                     >
                       Astroherbalism & Medical Astrology
                     </a>
@@ -71,7 +71,7 @@ const Nav: React.FC = () => {
                   <li>
                     <a
                       href="/offerings/readings"
-                      className="block px-4 py-2 hover:bg-secondary/80"
+                      className="block px-4 py-2 hover:underline"
                     >
                       Readings
                     </a>
@@ -81,7 +81,7 @@ const Nav: React.FC = () => {
               <li>
                 <a
                   href="/about"
-                  className="block px-4 py-2 hover:bg-secondary/80"
+                  className="block px-4 py-2"
                 >
                   About
                 </a>
@@ -89,7 +89,7 @@ const Nav: React.FC = () => {
               <li>
                 <a
                   href="/writing"
-                  className="block px-4 py-2 hover:bg-secondary/80"
+                  className="block px-4 py-2"
                 >
                   Writing
                 </a>
@@ -97,7 +97,7 @@ const Nav: React.FC = () => {
               <li>
                 <a
                   href="/shop"
-                  className="block px-4 py-2 hover:bg-secondary/80"
+                  className="block px-4 py-2"
                 >
                   Shop
                 </a>
@@ -105,7 +105,7 @@ const Nav: React.FC = () => {
               <li>
                 <a
                   href="/booking"
-                  className="block px-4 py-2 hover:bg-secondary/80"
+                  className="block px-4 py-2"
                 >
                   Booking
                 </a>
@@ -137,11 +137,11 @@ const Nav: React.FC = () => {
           <button suppressHydrationWarning className="hover:underline">
             Offerings
           </button>
-          <ul className="absolute left-0 mt-2 bg-secondary text-contrast rounded-lg shadow-lg hidden group-hover:block group-focus-within:block">
+          <ul className="absolute left-0 top-full bg-secondary-700 text-contrast rounded-lg shadow-lg hidden group-hover:block group-focus-within:block">
             <li>
               <a
                 href="/offerings/introduction"
-                className="block px-4 py-2 hover:bg-secondary/80"
+                className="block px-4 py-2 hover:underline"
               >
                 Introduction
               </a>
@@ -149,7 +149,7 @@ const Nav: React.FC = () => {
             <li>
               <a
                 href="/offerings/readings"
-                className="block px-4 py-2 hover:bg-secondary/80"
+                className="block px-4 py-2 hover:underline"
               >
                 Readings
               </a>
