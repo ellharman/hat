@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const BookingForm: React.FC = () => {
+const BookingForm: React.FC<{ min: number; max: number }> = ({ min, max }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [birthPlace, setBirthPlace] = useState("");
@@ -8,6 +8,7 @@ const BookingForm: React.FC = () => {
   const [birthTime, setBirthTime] = useState("");
   const [unknownTime, setUnknownTime] = useState(false);
   const [focus, setFocus] = useState("");
+  const [price, setPrice] = useState(min);
 
   // Helper to count words
   const wordCount = focus.trim().split(/\s+/).filter(Boolean).length;
@@ -220,6 +221,30 @@ const BookingForm: React.FC = () => {
             </div>
           </div>
 
+          <div className="mb-4">
+            <label className="block mb-3 font-medium text-primary-800 text-lg">
+              Select Your Price
+            </label>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-neutral-600">£{min}</span>
+                <span className="text-sm text-neutral-600">£{max}</span>
+              </div>
+              <input
+                type="range"
+                min={min}
+                max={max}
+                value={price}
+                onChange={(e) => setPrice(parseInt(e.target.value))}
+                className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer slider"
+                style={{
+                  background: `linear-gradient(to right, #647d95 0%, #647d95 ${((price - min) / (max - min)) * 100}%, #b6b2b7 ${((price - min) / (max - min)) * 100}%, #b6b2b7 100%)`,
+                }}
+              />
+              <div className="text-center"></div>
+            </div>
+          </div>
+
           <div className="mb-8 p-4 bg-neutral-50 rounded-lg border border-neutral-200">
             <div className="flex items-center justify-between">
               <div>
@@ -231,7 +256,9 @@ const BookingForm: React.FC = () => {
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-2xl font-bold text-accent-700">£85</div>
+                <div className="text-2xl font-bold text-accent-700">
+                  £{price}
+                </div>
               </div>
             </div>
           </div>

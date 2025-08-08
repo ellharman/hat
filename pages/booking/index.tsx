@@ -3,7 +3,11 @@ import BookingForm from "../../components/BookingForm";
 import fetchSBDatasource from "../api/storyblok-data-fetch";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const pricing = await fetchSBDatasource("pricing");
+  const res = await fetchSBDatasource("pricing");
+  const pricing: { [key: string]: number } = {};
+  res.datasource_entries.forEach((entry: any) => {
+    pricing[entry.name] = entry.value;
+  });
   console.log(pricing);
   return {
     props: { pricing },
@@ -13,11 +17,11 @@ export const getStaticProps: GetStaticProps = async () => {
 export default function BookingPage({
   pricing,
 }: {
-  pricing: { min: number; max: number };
+  pricing: { [key: string]: number };
 }) {
   return (
     <div className="container mx-auto px-4 py-8">
-      <BookingForm />
+      <BookingForm min={pricing.min} max={pricing.max} />
     </div>
   );
 }

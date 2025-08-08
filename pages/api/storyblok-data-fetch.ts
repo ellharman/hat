@@ -1,3 +1,4 @@
+export const runtime = "edge";
 
 export default async function fetchSBDatasource(datasource: string) {
   const response = await fetch(
