@@ -17,8 +17,10 @@
     "@storyblok/react": "^2.4.7",
     "@storyblok/richtext": "^3.2.0",
     "cheerio": "^1.1.0",
+    "date-fns": "^4.1.0",
     "next": "^15.3.1",
     "react": "18",
+    "react-datepicker": "^8.4.0",
     "react-dom": "18.3.1",
     "resend": "^4.5.1",
     "storyblok-rich-text-react-renderer": "^2.9.2"

@@ -1,11 +1,12 @@
 export const runtime = "edge";
 import { Resend } from "resend";
 
-export interface InquiryData {
+export interface BookingData {
   name: string;
   email: string;
-  subject: string;
-  message: string;
+  birthDate: string;
+  birthTime: string;
+  focus: string;
 }
 
 export default async function sendEmail(req: Request): Promise<Response> {
@@ -16,7 +17,7 @@ export default async function sendEmail(req: Request): Promise<Response> {
     });
   }
 
-  let body: InquiryData;
+  let body: BookingData;
   try {
     body = await req.json();
   } catch {
@@ -26,9 +27,9 @@ export default async function sendEmail(req: Request): Promise<Response> {
     });
   }
 
-  const { name, email, subject, message } = body;
+  const { name, email, birthDate, birthTime, focus } = body;
 
-  if (!name || !email || !subject || !message) {
+  if (!name || !email || !birthDate || !birthTime || !focus) {
     return new Response(JSON.stringify({ error: "All fields are required" }), {
       status: 400,
       headers: { "Content-Type": "application/json" },
@@ -36,10 +37,13 @@ export default async function sendEmail(req: Request): Promise<Response> {
   }
 
   if (!process.env.RESEND_API_KEY || !process.env.INQUIRY_RECIPIENT_EMAIL) {
-    return new Response(JSON.stringify({ error: "Server configuration error" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ error: "Server configuration error" }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   }
 
   try {
@@ -51,7 +55,8 @@ export default async function sendEmail(req: Request): Promise<Response> {
       return new Response(
         JSON.stringify({
           success: true,
-          message: "Email sending is disabled in the environment configuration.",
+          message:
+            "Email sending is disabled in the environment configuration.",
         }),
         { status: 200, headers: { "Content-Type": "application/json" } }
       );
@@ -60,8 +65,8 @@ export default async function sendEmail(req: Request): Promise<Response> {
     const result = await resend.emails.send({
       from: `datura@resend.dev`,
       to: process.env.INQUIRY_RECIPIENT_EMAIL,
-      subject: `New Inquiry from ${name}: ${subject}`,
-      text: message,
+      subject: `New Booking from ${name} ${email}`,
+      text: `Name: ${name}\nEmail: ${email}\nBirth Date: ${birthDate} ${birthTime}\nFocus: ${focus}`,
     });
 
     if (result.error) {

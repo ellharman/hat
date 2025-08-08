@@ -29,63 +29,87 @@ const InquiryForm: React.FC = () => {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="p-4 mx-auto max-w-xl bg-secondary"
+      className="p-4 mx-auto max-w-xl bg-white rounded-xl shadow-lg border border-neutral-200 font-serif overflow-hidden"
     >
-      <div>
-        <h1 className="text-2xl font-semibold text-center">Contact</h1>
-        <div className="mb-4">
-          <label className="text-sm font-medium mb-2 block">Name</label>
+      <div className="p-6 sm:p-8">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-primary-900 text-center">
+          Get in Touch
+        </h2>
+
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-neutral-700 mb-1">
+            Name
+          </label>
           <input
             type="text"
             name="name"
-            placeholder="Enter Name"
+            placeholder="Enter your name"
             required
-            className="w-full py-2.5 px-4 text-surface bg-neutral rounded-md focus:border-ring focus:bg-neutral text-sm outline-0 transition-all"
+            className="w-full border-2 border-neutral-300 rounded-lg px-4 py-3 text-base focus:border-primary-700 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-all bg-white"
           />
         </div>
-        <div className="mb-4">
-          <label className="text-sm font-medium mb-2 block">Email</label>
+
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-neutral-700 mb-1">
+            Email
+          </label>
           <input
             type="email"
             name="email"
-            placeholder="Enter Email"
+            placeholder="Enter your email"
             required
-            className="w-full py-2.5 px-4 text-surface bg-neutral rounded-md focus:border-ring focus:bg-neutral text-sm outline-0 transition-all"
+            className="w-full border-2 border-neutral-300 rounded-lg px-4 py-3 text-base focus:border-primary-700 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-all bg-white"
           />
         </div>
-        <div className="mb-4">
-          <label className="text-sm font-medium mb-2 block">Subject</label>
+
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-neutral-700 mb-1">
+            Subject
+          </label>
           <input
             type="text"
             name="subject"
-            placeholder="Enter Subject"
+            placeholder="Enter subject"
             required
-            className="w-full py-2.5 px-4 text-surface bg-neutral rounded-md focus:border-ring focus:bg-neutral text-sm outline-0 transition-all"
+            className="w-full border-2 border-neutral-300 rounded-lg px-4 py-3 text-base focus:border-primary-700 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-all bg-white"
           />
         </div>
-        <div className="mb-4">
-          <label className="text-sm font-medium mb-2 block">Message</label>
+
+        <div className="mb-8">
+          <label className="block text-sm font-medium text-neutral-700 mb-1">
+            Message
+          </label>
           <textarea
             name="message"
-            placeholder="Enter Message"
-            rows={4}
+            placeholder="Enter your message"
+            rows={6}
             required
-            className="w-full px-4 text-surface bg-neutral rounded-md focus:border-ring focus:bg-neutral text-sm pt-3 outline-0 transition-all"
-          ></textarea>
+            className="w-full border-2 border-neutral-300 rounded-lg px-4 py-3 text-base focus:border-primary-700 focus:ring-2 focus:ring-primary-200 focus:outline-none bg-white text-neutral-900 font-serif resize-none transition-all"
+          />
         </div>
+
         <button
           type="submit"
-          className="text-accent-50 bg-secondary-900 rounded-md hover:bg-secondary/90 tracking-wide text-[15px] px-4 py-2 w-full outline-0 cursor-pointer"
+          onClick={(e) => {
+            // Since we can't use a form in the artifact, this would need to be handled differently
+            // In your actual implementation, you'd keep the form element and this handleSubmit logic
+            console.log("Form submission would be handled here");
+          }}
+          className="w-full bg-primary-700 hover:bg-primary-800 active:bg-primary-900 text-white py-4 rounded-lg font-semibold text-lg transition-all duration-200 transform active:scale-95"
         >
-          Send
+          Send Message
         </button>
+
         {success && (
-          <div className="flex justify-center items-center my-4">
-            <span className="ml-2 text-lg">Message sent!</span>
+          <div className="mt-4 p-3 bg-accent-50 rounded-lg border border-accent-200 text-center">
+            <span className="text-accent-700 font-medium">
+              Message sent successfully!
+            </span>
           </div>
         )}
       </div>
     </form>
   );
 };
+
 export default InquiryForm;
