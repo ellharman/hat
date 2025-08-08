@@ -4,6 +4,7 @@ import { Resend } from "resend";
 export interface BookingData {
   name: string;
   email: string;
+  birthPlace: string;
   birthDate: string;
   birthTime: string;
   focus: string;
@@ -27,9 +28,9 @@ export default async function sendEmail(req: Request): Promise<Response> {
     });
   }
 
-  const { name, email, birthDate, birthTime, focus } = body;
+  const { name, email, birthPlace, birthDate, birthTime, focus } = body;
 
-  if (!name || !email || !birthDate || !birthTime || !focus) {
+  if (!name || !email || !birthPlace || !birthDate || !birthTime || !focus) {
     return new Response(JSON.stringify({ error: "All fields are required" }), {
       status: 400,
       headers: { "Content-Type": "application/json" },
@@ -66,7 +67,7 @@ export default async function sendEmail(req: Request): Promise<Response> {
       from: `datura@resend.dev`,
       to: process.env.INQUIRY_RECIPIENT_EMAIL,
       subject: `New Booking from ${name} ${email}`,
-      text: `Name: ${name}\nEmail: ${email}\nBirth Date: ${birthDate} ${birthTime}\nFocus: ${focus}`,
+      text: `Name: ${name}\nEmail: ${email}\nBirth Place: ${birthPlace}\nBirth Date: ${birthDate} ${birthTime}\nFocus: ${focus}`,
     });
 
     if (result.error) {

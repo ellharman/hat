@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const BookingForm: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [birthPlace, setBirthPlace] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [birthTime, setBirthTime] = useState("");
   const [unknownTime, setUnknownTime] = useState(false);
@@ -110,6 +111,19 @@ const BookingForm: React.FC = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className="w-full border-2 border-neutral-300 rounded-lg px-4 py-3 text-base focus:border-primary-700 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-all bg-white"
+              required
+            />
+          </div>
+
+          <div className="mb-8">
+            <label className="block mb-3 font-medium text-primary-800 text-lg">
+              Birth Place
+            </label>
+            <input
+              type="text"
+              value={birthPlace}
+              onChange={(e) => setBirthPlace(e.target.value)}
               className="w-full border-2 border-neutral-300 rounded-lg px-4 py-3 text-base focus:border-primary-700 focus:ring-2 focus:ring-primary-200 focus:outline-none transition-all bg-white"
               required
             />
