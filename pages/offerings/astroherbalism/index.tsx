@@ -36,7 +36,7 @@ const Astroherbalism: React.FC<PageStoryblok> = ({ story }) => {
   return (
     <>
       {story ? <Page story={story} /> : <div>Loading...</div>}
-      {/* <InquiryForm /> */}
+      <InquiryForm />
     </>
   );
 };

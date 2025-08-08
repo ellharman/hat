@@ -52,3 +52,8 @@ p:not(:last-child) {
     margin-bottom: 2rem;
   }
 }
+
+/* text color */
+span {
+  color: #1b2031 !important;
+}

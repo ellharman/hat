@@ -39,6 +39,7 @@ export interface GridStoryblok {
     | FeatureStoryblok
     | GridStoryblok
     | PageStoryblok
+    | SubstackUrlStoryblok
     | TeaserStoryblok
   )[];
   component: "grid";
@@ -50,6 +51,13 @@ export interface PageStoryblok {
   title?: string;
   content?: RichtextStoryblok;
   component: "page";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface SubstackUrlStoryblok {
+  substack_url?: string;
+  component: "substack_url";
   _uid: string;
   [k: string]: any;
 }

@@ -38,7 +38,6 @@ const Nav: React.FC<{ className?: string }> = ({ className }) => {
           Menu
         </button>
       </nav>
-      
       {/* Overlay */}
       {menuOpen && (
         <div
@@ -46,11 +45,11 @@ const Nav: React.FC<{ className?: string }> = ({ className }) => {
           onClick={() => setMenuOpen(false)}
         />
       )}
-      
+
       {/* Slide-out menu */}
       <div
         className={`fixed top-0 right-0 h-full w-80 bg-secondary-700 text-contrast shadow-xl z-[99999] transform transition-transform duration-300 ease-in-out ${
-          menuOpen ? 'translate-x-0' : 'translate-x-full'
+          menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="p-6">
@@ -63,21 +62,23 @@ const Nav: React.FC<{ className?: string }> = ({ className }) => {
               ×
             </button>
           </div>
-          
+
           <ul className="space-y-4">
             <li>
-              <a 
-                href="/about" 
+              <a
+                href="/about"
                 className="block py-3 text-lg border-b border-secondary-600 hover:underline"
                 onClick={() => setMenuOpen(false)}
               >
                 About
               </a>
             </li>
-            
+
             <li className="border-b border-secondary-600">
               <div className="py-3">
-                <span className="block text-lg font-medium mb-2">Offerings</span>
+                <span className="block text-lg font-medium mb-2">
+                  Offerings
+                </span>
                 <ul className="ml-4 space-y-2">
                   <li>
                     <a
@@ -97,42 +98,33 @@ const Nav: React.FC<{ className?: string }> = ({ className }) => {
                       Astroherbalism & Medical Astrology
                     </a>
                   </li>
-                  <li>
-                    <a
-                      href="/offerings/readings"
-                      className="block py-2 hover:underline"
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      Readings
-                    </a>
-                  </li>
                 </ul>
               </div>
             </li>
-            
+
             <li>
-              <a 
-                href="/writing" 
+              <a
+                href="/writing"
                 className="block py-3 text-lg border-b border-secondary-600 hover:underline"
                 onClick={() => setMenuOpen(false)}
               >
                 Writing
               </a>
             </li>
-            
+
             <li>
-              <a 
-                href="/shop" 
+              <a
+                href="/shop"
                 className="block py-3 text-lg border-b border-secondary-600 hover:underline"
                 onClick={() => setMenuOpen(false)}
               >
                 Shop
               </a>
             </li>
-            
+
             <li>
-              <a 
-                href="/booking" 
+              <a
+                href="/booking"
                 className="block py-3 text-lg hover:underline"
                 onClick={() => setMenuOpen(false)}
               >
@@ -175,10 +167,10 @@ const Nav: React.FC<{ className?: string }> = ({ className }) => {
             </li>
             <li>
               <a
-                href="/offerings/readings"
+                href="/offerings/astroherbalism"
                 className="block px-4 py-2 hover:underline"
               >
-                Readings
+                Astroherbalism & Medical Astrology
               </a>
             </li>
           </ul>
