@@ -20,7 +20,7 @@ const Page = ({ story }: { story: PageStoryblok }) => {
   );
 
   return (
-    <div className="bg-secondary h-fit-content bg-opacity-90 p-4 rounded-lg font-semibold my-2">
+    <div className="bg-secondary h-fit-content bg-opacity-90 p-4 rounded-lg font-semibold my-2 mx-72">
       <h1 className="text-2xl font-bold">{content?.title}</h1>
       <p className="text-sm text-neutral-500">{content?.description}</p>
       <div
