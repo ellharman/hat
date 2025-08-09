@@ -64,10 +64,11 @@ export default async function sendEmail(req: Request): Promise<Response> {
     }
 
     const result = await resend.emails.send({
-      from: `datura@resend.dev`,
+      from: `hello@inquiries.datura.uk`,
       to: process.env.INQUIRY_RECIPIENT_EMAIL,
       subject: `New Booking from ${name} ${email}`,
       text: `Name: ${name}\nEmail: ${email}\nBirth Place: ${birthPlace}\nBirth Date: ${birthDate} ${birthTime}\nFocus: ${focus}`,
+      replyTo: "hello@inquiries.datura.uk",
     });
 
     if (result.error) {

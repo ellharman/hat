@@ -62,6 +62,7 @@ export default async function sendEmail(req: Request): Promise<Response> {
       to: process.env.INQUIRY_RECIPIENT_EMAIL,
       subject: `New Inquiry from ${name}: ${subject}`,
       text: message,
+      replyTo: "hello@inquiries.datura.uk",
     });
 
     if (result.error) {
