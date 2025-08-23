@@ -147,11 +147,11 @@ const Nav: React.FC<{ className?: string }> = ({ className }) => {
         Datura Astrobotanics
       </a>
       <ul className="flex space-x-6">
-        <li>
+        {/* <li>
           <a href="/" className="hover:underline">
             Home
           </a>
-        </li>
+        </li> */}
         <li className="relative group">
           <button suppressHydrationWarning className="hover:underline">
             Offerings

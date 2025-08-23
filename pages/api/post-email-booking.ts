@@ -8,6 +8,7 @@ export interface BookingData {
   birthDate: string;
   birthTime: string;
   focus: string;
+  price: number;
 }
 
 export default async function sendEmail(req: Request): Promise<Response> {
@@ -28,9 +29,9 @@ export default async function sendEmail(req: Request): Promise<Response> {
     });
   }
 
-  const { name, email, birthPlace, birthDate, birthTime, focus } = body;
+  const { name, email, birthPlace, birthDate, birthTime, focus, price } = body;
 
-  if (!name || !email || !birthPlace || !birthDate || !birthTime || !focus) {
+  if (!name || !email || !birthPlace || !birthDate || !birthTime || !focus || price === undefined) {
     return new Response(JSON.stringify({ error: "All fields are required" }), {
       status: 400,
       headers: { "Content-Type": "application/json" },
@@ -64,12 +65,15 @@ export default async function sendEmail(req: Request): Promise<Response> {
     }
 
     const result = await resend.emails.send({
-      from: `hello@inquiries.datura.uk`,
+      from: `hello@datura.uk`,
       to: process.env.INQUIRY_RECIPIENT_EMAIL,
       subject: `New Booking from ${name} ${email}`,
-      text: `Name: ${name}\nEmail: ${email}\nBirth Place: ${birthPlace}\nBirth Date: ${birthDate} ${birthTime}\nFocus: ${focus}`,
-      replyTo: "hello@inquiries.datura.uk",
+      text: `Name: ${name}\nEmail: ${email}\nBirth Place: ${birthPlace}\nBirth Date: ${birthDate} ${birthTime}\nFocus: ${focus}\nPrice: £${price}`,
+      replyTo: "hello@datura.uk",
     });
+
+    console.log("result:");
+    console.log(result);
 
     if (result.error) {
       return new Response(JSON.stringify({ error: "Failed to send email" }), {

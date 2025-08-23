@@ -7,7 +7,7 @@ const InquiryForm: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(event.currentTarget as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
 
     const response = await fetch("/api/post-email", {
@@ -90,11 +90,6 @@ const InquiryForm: React.FC = () => {
 
         <button
           type="submit"
-          onClick={(e) => {
-            // Since we can't use a form in the artifact, this would need to be handled differently
-            // In your actual implementation, you'd keep the form element and this handleSubmit logic
-            console.log("Form submission would be handled here");
-          }}
           className="w-full bg-primary-700 hover:bg-primary-800 active:bg-primary-900 text-white py-4 rounded-lg font-semibold text-lg transition-all duration-200 transform active:scale-95"
         >
           Send Message

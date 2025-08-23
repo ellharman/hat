@@ -8,7 +8,6 @@ export const getStaticProps: GetStaticProps = async () => {
   res.datasource_entries.forEach((entry: any) => {
     pricing[entry.name] = entry.value;
   });
-  console.log(pricing);
   return {
     props: { pricing },
   };
@@ -21,7 +20,11 @@ export default function BookingPage({
 }) {
   return (
     <div className="container mx-auto px-4 py-8">
-      <BookingForm min={pricing.min} max={pricing.max} />
+      <BookingForm
+        min={pricing.min}
+        max={pricing.max}
+        defaultPrice={pricing.default}
+      />
     </div>
   );
 }

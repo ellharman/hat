@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-const BookingForm: React.FC<{ min: number; max: number }> = ({ min, max }) => {
+const BookingForm: React.FC<{
+  min: number;
+  max: number;
+  defaultPrice: number;
+}> = ({ min, max, defaultPrice }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [birthPlace, setBirthPlace] = useState("");
@@ -8,7 +12,7 @@ const BookingForm: React.FC<{ min: number; max: number }> = ({ min, max }) => {
   const [birthTime, setBirthTime] = useState("");
   const [unknownTime, setUnknownTime] = useState(false);
   const [focus, setFocus] = useState("");
-  const [price, setPrice] = useState(min);
+  const [price, setPrice] = useState(80);
 
   // Helper to count words
   const wordCount = focus.trim().split(/\s+/).filter(Boolean).length;
@@ -24,13 +28,17 @@ const BookingForm: React.FC<{ min: number; max: number }> = ({ min, max }) => {
       body: JSON.stringify({
         name,
         email,
+        birthPlace,
         birthDate,
         birthTime,
         focus,
+        price,
       }),
     });
     if (response.ok) {
-      alert("Booking submitted! (Payment integration coming soon)");
+      alert(
+        "Booking submitted! I will be in touch over email to discuss your enquiry shortly."
+      );
     } else {
       alert("Failed to submit booking");
     }
@@ -265,10 +273,16 @@ const BookingForm: React.FC<{ min: number; max: number }> = ({ min, max }) => {
 
           <button
             onClick={handleSubmit}
-            disabled={!isValidDate() || !focus.trim()}
+            disabled={
+              !isValidDate() ||
+              !name.trim() ||
+              !email.trim() ||
+              !birthPlace.trim() ||
+              !focus.trim()
+            }
             className="w-full bg-primary-700 hover:bg-primary-800 active:bg-primary-900 text-white py-4 rounded-lg font-semibold text-lg transition-all duration-200 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
           >
-            Pay & Book (Coming Soon)
+            Pay & Book
           </button>
         </div>
       </div>

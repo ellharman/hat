@@ -25,7 +25,7 @@ export default async function fetchSB(
 
   return fetch(url, {
     next: {
-      revalidate: options?.revalidate, // Set to number of seconds or false to opt out
+      revalidate: 60, // Set to number of seconds or false to opt out
       tags: options?.tags, // Optional cache tags for on-demand revalidation
     },
   });

@@ -11,7 +11,11 @@ export default async function handler(req: Request) {
   }
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      next: {
+        revalidate: 60,
+      },
+    });
     const html = await response.text();
     const $ = cheerio.load(html);
 
